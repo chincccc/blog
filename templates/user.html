@@ -1,0 +1,30 @@
+{% extends "base.html" %} 
+{% import "bootstrap/wtf.html" as wtf %}  
+{% block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <div class='center-block'><h3 class>个人信息</h3></div>
+            {% for user in users %}
+                用户名:{{user.user_name}}<br>
+                昵称:{{user.nickname}}<br>
+                邮箱:{{user.email}}<br>
+                年龄:{{user.age}}<br>
+                性别:{{user.sex}}<br>
+                生日:{{user.birthdate}}<br>
+                注册时间:{{user.user_crt_dt}}<br>
+                {% if flag != 1 %}
+                <div class="cz">
+                    <a href="/user_change/">修改个人信息</a><br>
+                    <a href="/pass_change/">修改密码</a><br>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
+</div>
+{% endblock content%}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content%}
+  <div class="container-fluid">
+        <div class="row">
+           <div class="col-md-offset-2 col-md-8">
+                <form role="form" action={{url_for('main.wrarticle')}} method="post">
+                <div class="form-group">
+                    <label for="name">文章标题</label>
+                    <input type="text" name="article_title" class="form-control" placeholder="那是很久很久以前"/>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <label for="name">头图地址</label>
+                    <input type="text" name="article_url" class="form-control" placeholder="图片地址" value="https://pan.chincc.tk/38c871985574fba3.jpg"/>
+                    <br>
+                </div>
+                <div class="form-group">
+                    <div>
+                        <label for="name">文章分类</label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="f_type"  value="1" checked> 科技
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="f_type" value="2"/>生活
+                        </label>
+                    </div>
+                    <br>
+                    <textarea id="mymarkdown" name="article_content"></textarea>
+                    <button type="submit" class="btn btn-primary">发布文章</button>
+                </div>
+                </form>
+                
+           </div>
+        </div>
+     </div>
+      {{super()}}
+{% endblock %}

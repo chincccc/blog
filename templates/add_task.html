@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content%}
+  <div class="container-fluid">
+        <div class="row">
+           <div class="col-md-offset-2 col-md-8">
+                <form role="form" action={{url_for('main.add_task')}} method="post">
+                <div class="form-group">
+                    <label for="name">任务名称</label>
+                    <input type="text" name="task_name" class="form-control" placeholder="学习计划"/>
+                    <br>
+                    <br>
+                    <textarea id="mymarkdown" name="task_content"></textarea>
+                    <button type="submit" class="btn btn-primary">发布任务</button>
+                </div>
+                </form>
+                
+           </div>
+        </div>
+     </div>
+{{super()}}
+{% endblock %}

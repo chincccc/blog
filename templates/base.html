@@ -1,0 +1,62 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}贴嘛{% endblock title %}
+{%- block styles %}
+{{super()}}
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <style>
+    html, body, .wrap { height:100%; }
+ </style>
+{%- endblock styles %}
+
+{% block navbar %}
+ <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">贴嘛</a>
+        </div>
+    <div>
+        <ul class="nav navbar-nav">
+            {% if flag == 0 %}
+            <li class="active"><a href="/">全部帖子</a></li>
+            {% else%}
+            <li ><a href="/">全部帖子</a></li>
+            {% endif %}
+            {% if flag == 1 %}
+            <li class="active"><a href="{{url_for('main.get_technology')}}">科技区</a></li>
+            {% else%}
+            <li ><a href="{{url_for('main.get_technology')}}">科技区</a></li>
+            {% endif %}
+            {% if flag == 2 %}
+            <li class="active"><a href="{{url_for('main.get_technology2')}}">生活区</a></li>
+            {% else%}
+            <li ><a href="{{url_for('main.get_technology2')}}">生活区</a></li>
+            {% endif %}
+            {% if flag == 3 %}
+            <li class="active"><a href="{{url_for('main.tasks')}}">我的计划</a></li>
+            {% else%}
+            <li><a href="{{url_for('main.tasks')}}">我的计划</a></li>
+            {% endif %}
+        </ul>
+        <ul class="nav navbar-nav navbar-right"> 
+            {% if current_user.is_authenticated %}
+            <li><a href="{{url_for('main.wrarticle')}}">写文章</a></li>
+            <li><a href="{{url_for('main.manage_article')}}">管理文章</a></li>
+            <li><a href="/user_self/">Hello,{{current_user.user_name}}</a></li>
+            <li><a href="{{url_for('main.login_out')}}">登出</a></li>
+            {% else %}
+          <li><a href="{{url_for('main.login_up')}}">注册</a></li>
+          <li><a href="{{ url_for('main.login_in')}}">登录</a></li>
+          {% endif %}
+      </ul> 
+    </div>
+    </div>
+</nav>
+<div class="wrap">
+    <div class="main">
+{% endblock navbar %}
+{% block content %}
+    </div>
+</div>
+{% endblock %}
+
+
