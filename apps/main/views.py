@@ -31,7 +31,7 @@ def login_in():
         user = User.query.filter_by(user_name=username).first()
         if user is not None and user.verify_password(password):
             login_user(user)
-            g.user=usernull
+            g.user=None
     if loginForm.validate_on_submit():
         username = loginForm.username.data
         password = loginForm.password.data
